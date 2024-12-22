@@ -15,7 +15,7 @@ const Register = () => {
                     </div>
 
                     <p className='mt-3 text-xl text-center text-gray-600 '>
-                        Get Your Free Account Now.
+                        Register Now!
                     </p>
 
                     <div
