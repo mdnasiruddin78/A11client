@@ -9,6 +9,7 @@ import Register from "../Pages/Authentication/Register";
 import Service from "../Pages/Service";
 import Addservice from "../Pages/Addservice";
 import Myreviews from "../Pages/Myreviews";
+import Privateroute from "./Privateroute";
 
 
 const router = createBrowserRouter([
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addservice",
-        element: <Addservice></Addservice>,
+        element: <Privateroute><Addservice></Addservice></Privateroute>,
       },
       {
         path: "/myreview",
-        element: <Myreviews></Myreviews>,
+        element: <Privateroute><Myreviews></Myreviews></Privateroute>,
       }
     ]
   },

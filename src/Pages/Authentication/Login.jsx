@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/Authprovider";
+import toast from "react-hot-toast";
 
 
 const Login = () => {
 
-    const {signInUser,handleGoole} = useContext(AuthContext)
+    const {signInUser,handleGoole,setUser} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = e => {
         e.preventDefault()
@@ -18,19 +21,28 @@ const Login = () => {
         signInUser(email,password)
         .then(result => {
             console.log(result.user)
+            const user = result.user;
+            setUser(user)
+            navigate(location?.state? location.state : '/')
+            toast.success('login successfully')
         })
         .catch(error => {
             console.log(error.message)
+            toast.error(error.message)
         })
     }
 
     const handleGooleLogin = () => {
         handleGoole()
         .then(result => {
-            console.log(result.user)
+            const user = result.user;
+            setUser(user)
+            navigate(location?.state? location.state : '/')
+            toast.success('login successfully')
         })
         .catch(error => {
             console.log(error.message)
+            toast.error(error.message)
         })
     }
 

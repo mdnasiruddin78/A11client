@@ -55,6 +55,8 @@ const Register = () => {
         handleGoole()
         .then(result => {
             console.log(result.user)
+            toast.success('Register successfully')
+            navigate("/")
         })
         .catch(error => {
             console.log(error.message)

@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className='flex justify-between items-center space-x-2'>
                 <div>
                     {
-                        user && <div className='tooltip tooltip-left' data-tip={`${user?.displayName}`}><img className='w-12 rounded-full' src={user?.photoURL} alt="photo" /></div>
+                        user && <div className='tooltip tooltip-left' data-tip={`${user?.displayName}`}><img className='w-12 rounded-full' src={user?.photoURL} alt="" /></div>
                     }
                 </div>
                 {
