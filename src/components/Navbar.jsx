@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/logoImg.webp';
 import { HiMenuAlt1 } from "react-icons/hi";
 import { TbLogin2 } from "react-icons/tb";
@@ -28,8 +28,8 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="space-x-3">
-                <button className="btn bg-black text-white border-2 border-white">Login <TbLogin2 className="text-xl" /></button>
-                <button className="btn bg-black text-white border-2 border-white">Register <FaRegRegistered className="text-xl" /></button>
+                <Link to="/login" className="btn bg-black text-white border-2 border-white">Login <TbLogin2 className="text-xl" /></Link>
+                <Link to="/register" className="btn bg-black text-white border-2 border-white">Register <FaRegRegistered className="text-xl" /></Link>
             </div>
         </div>
     );
