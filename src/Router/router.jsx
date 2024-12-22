@@ -6,6 +6,9 @@ import Error from "../Pages/Error";
 import Home from "../Pages/Home";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
+import Service from "../Pages/Service";
+import Addservice from "../Pages/Addservice";
+import Myreviews from "../Pages/Myreviews";
 
 
 const router = createBrowserRouter([
@@ -25,6 +28,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/service",
+        element: <Service></Service>,
+      },
+      {
+        path: "/addservice",
+        element: <Addservice></Addservice>,
+      },
+      {
+        path: "/myreview",
+        element: <Myreviews></Myreviews>,
       }
     ]
   },

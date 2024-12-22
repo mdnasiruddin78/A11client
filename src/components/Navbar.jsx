@@ -15,16 +15,16 @@ const Navbar = () => {
                     <div tabIndex={0} role="button"><HiMenuAlt1 className='text-3xl text-white' /></div>
                     <ul tabIndex={0} className="dropdown-content menu text-white backdrop-blur bg-white/30 font-bold rounded-box z-[1] w-44 p-2">
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/allmovies">Services</NavLink></li>
-                        <li><NavLink to="/addmovie">Add Service</NavLink></li>
-                        <li><NavLink to="/myfavorites">My Reviews</NavLink></li>
+                        <li><NavLink to="/service">Services</NavLink></li>
+                        <li><NavLink to="/addservice">Add Service</NavLink></li>
+                        <li><NavLink to="/myreview">My Reviews</NavLink></li>
                     </ul>
                 </div>
                 <div className="lg:flex md:flex hidden space-x-4 text-white font-bold">
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/service">Services</NavLink>
                     <NavLink to="/addservice">Add Service</NavLink>
-                    <NavLink to="/myreviews">My Reviews</NavLink>
+                    <NavLink to="/myreview">My Reviews</NavLink>
                 </div>
             </div>
             <div className="space-x-3">
