@@ -87,7 +87,7 @@ const Addservice = () => {
                         <textarea className="textarea textarea-bordered" name='description' placeholder="Description" required></textarea>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn rounded-full bg-black text-white">Add Service</button>
+                        <button className="btn rounded-full bg-gray-800 text-white">Add Service</button>
                     </div>
                 </form>
             </div>
