@@ -4,6 +4,7 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { TbLogin2 } from "react-icons/tb";
 import { FaRegRegistered } from "react-icons/fa6";
 
+
 const Navbar = () => {
     return (
         <div className="flex justify-between items-center backdrop-blur bg-white/10 py-3 px-6">

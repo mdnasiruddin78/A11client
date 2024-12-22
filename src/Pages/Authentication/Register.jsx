@@ -8,7 +8,7 @@ const Register = () => {
             <Helmet>
                 <title>REGISTER-PAGE</title>
             </Helmet>
-            <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg '>
+            <div className='flex w-full max-w-lg mx-auto overflow-hidden bg-white rounded-lg shadow-lg '>
                 <div className='w-full px-6 py-8 md:px-8'>
                     <div className='flex justify-center mx-auto'>
                         <img className='w-auto h-7 sm:h-8' src="" alt='' />
