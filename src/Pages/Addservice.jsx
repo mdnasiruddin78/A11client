@@ -1,11 +1,13 @@
 import { Helmet } from "react-helmet-async";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from "../Provider/Authprovider";
 
 
 const Addservice = () => {
 
+    const {user} = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
 
     return (
@@ -77,7 +79,10 @@ const Addservice = () => {
                             <label className="label">
                                 <span className="label-text">userEmail</span>
                             </label>
-                            <input type="email" name='email' className="input input-bordered" required />
+                            <input type="email"
+                             defaultValue={user?.email}
+                             disabled={true} 
+                             name='email' className="input input-bordered" required />
                         </div>
                     </div>
                     <div className="form-control">
