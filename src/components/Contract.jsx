@@ -1,5 +1,4 @@
-import { FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
-import { GrUserWorker } from "react-icons/gr";
+import { FaInternetExplorer, FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { LuSend } from "react-icons/lu";
 
@@ -11,8 +10,8 @@ const Contract = () => {
             <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
                 <div className="space-y-5">
                     <div className="flex items-center space-x-2">
-                    <GrUserWorker className="text-white text-2xl"/>
-                    <h3 className="text-white text-2xl font-bold">Company Name: WORKER-SERVICE</h3>
+                    <FaInternetExplorer className="text-white text-2xl"/>
+                    <h3 className="text-white text-2xl font-bold">Company Name: WORK-SERVICE</h3>
                     </div>
                     <div className="flex items-center space-x-2">
                         <FaPhoneVolume className="text-white text-2xl" />
