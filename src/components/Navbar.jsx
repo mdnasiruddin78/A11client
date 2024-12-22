@@ -3,9 +3,14 @@ import logo from '../assets/logoImg.webp';
 import { HiMenuAlt1 } from "react-icons/hi";
 import { TbLogin2 } from "react-icons/tb";
 import { FaRegRegistered } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/Authprovider";
 
 
 const Navbar = () => {
+
+    const { user, logoutUser } = useContext(AuthContext)
+
     return (
         <div className="flex justify-between items-center backdrop-blur bg-white/10 py-3 px-6">
             <div className="flex space-x-3 items-center">
@@ -28,9 +33,18 @@ const Navbar = () => {
                     <NavLink to="/myreview">My Reviews</NavLink>
                 </div>
             </div>
-            <div className="space-x-3">
-                <Link to="/login" className="btn bg-black text-white border-2 border-white">Login <TbLogin2 className="text-xl" /></Link>
-                <Link to="/register" className="btn bg-black text-white border-2 border-white">Register <FaRegRegistered className="text-xl" /></Link>
+            <div className='flex justify-between items-center space-x-2'>
+                <div>
+                    {
+                        user && <div className='tooltip tooltip-left' data-tip={`${user?.displayName}`}><img className='w-12 rounded-full' src={user?.photoURL} alt="photo" /></div>
+                    }
+                </div>
+                {
+                    user && user?.email ? <button onClick={logoutUser} className="btn bg-black text-white border-2 border-white">Logout</button> : <div className="space-x-2">
+                        <Link to="/login" className="btn bg-black text-white border-2 border-white">Login <TbLogin2 className="text-xl" /></Link>
+                        <Link to="/register" className="btn bg-black text-white border-2 border-white">Register <FaRegRegistered className="text-xl" /></Link>
+                    </div>
+                }
             </div>
         </div>
     );

@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/Authprovider";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
 
-    const {name} = useContext(AuthContext)
-    console.log(name)
+    const {createUser,handleGoole,updateUserProfile,setUser} = useContext(AuthContext)
+    const navigate = useNavigate()
+    
     const handleRegister = e => {
         e.preventDefault()
         const from = e.target;
@@ -16,6 +18,47 @@ const Register = () => {
         const email = from.email.value;
         const password = from.password.value;
         console.log(name,photo,email,password)
+
+        if(password.length < 6){
+            toast.error('Password must contain at least 6 characters')
+            return
+        }
+
+        if(!/[a-z]/.test(password)){
+            toast.error('Password must contain at least one lowercase letter')
+            return;
+        }
+
+        if(!/[A-Z]/.test(password)){
+            toast.error('Password must contain at least one uppercase letter')
+            return;
+        }
+
+        createUser(email,password)
+        .then(result => {
+            setUser({...result.user,displayName:name , photoURL:photo})
+            updateUserProfile({displayName:name , photoURL:photo})
+            .then(()=>{
+                navigate("/")
+            }).catch(error => {
+                console.log(error)
+            })
+            toast.success('Register successfully')
+        })
+        .catch(error => {
+            console.log(error.message)
+            toast.error(error.message)
+        })
+    }
+
+    const handleGooleLogin = () => {
+        handleGoole()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
     }
 
     return (
@@ -34,7 +77,7 @@ const Register = () => {
                     </p>
 
                     <div
-                        
+                        onClick={handleGooleLogin}
                         className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
                     >
                         <div className='px-4 py-2'>

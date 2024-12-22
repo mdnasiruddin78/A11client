@@ -1,8 +1,39 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/Authprovider";
 
 
 const Login = () => {
+
+    const {signInUser,handleGoole} = useContext(AuthContext)
+
+    const handleLogin = e => {
+        e.preventDefault()
+        const from = e.target;
+        const email = from.email.value;
+        const password = from.password.value;
+        console.log(email,password)
+
+        signInUser(email,password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+    }
+
+    const handleGooleLogin = () => {
+        handleGoole()
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+    }
+
     return (
         <div className='flex justify-center items-center  my-10'>
             <Helmet>
@@ -19,6 +50,7 @@ const Login = () => {
                     </p>
 
                     <div
+                        onClick={handleGooleLogin}
                         className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
                     >
                         <div className='px-4 py-2'>
@@ -56,7 +88,7 @@ const Login = () => {
 
                         <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
                     </div>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <div className='mt-4'>
                             <label
                                 className='block mb-2 text-sm font-medium text-gray-600 '
