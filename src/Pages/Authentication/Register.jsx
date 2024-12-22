@@ -1,8 +1,23 @@
+import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/Authprovider";
 
 
 const Register = () => {
+
+    const {name} = useContext(AuthContext)
+    console.log(name)
+    const handleRegister = e => {
+        e.preventDefault()
+        const from = e.target;
+        const name = from.name.value;
+        const photo = from.photo.value;
+        const email = from.email.value;
+        const password = from.password.value;
+        console.log(name,photo,email,password)
+    }
+
     return (
         <div className='flex justify-center items-center my-10'>
             <Helmet>
@@ -57,7 +72,7 @@ const Register = () => {
 
                         <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
                     </div>
-                    <form>
+                    <form onSubmit={handleRegister}>
                         <div className='mt-4'>
                             <label
                                 className='block mb-2 text-sm font-medium text-gray-600 '
