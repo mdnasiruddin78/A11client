@@ -39,7 +39,7 @@ const Contract = () => {
                             <LuSend className="text-white text-2xl" />
                             <h3 className='text-2xl font-bold text-white'>Send Your Email</h3>
                         </div>
-                        <div>
+                        <div className="flex items-center">
                             <input type="email" placeholder="Type your email" className="input input-bordered w-full max-w-xs" />
                             <button className="btn -7 bg-black text-white border-2 border-white">Send </button>
                         </div>

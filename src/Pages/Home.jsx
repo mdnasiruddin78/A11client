@@ -15,13 +15,13 @@ const Home = () => {
                 <Banner></Banner>
             </section>
             <section></section>
-            <section>
+            <section className="py-20">
                 <Partners></Partners>
             </section>
             <section>
                 <FaqGallery></FaqGallery>
             </section>
-            <section>
+            <section className="py-20">
                 <Contract></Contract>
             </section>
         </div>
