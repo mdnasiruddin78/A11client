@@ -5,6 +5,7 @@ import { TbLogin2 } from "react-icons/tb";
 import { FaRegRegistered } from "react-icons/fa6";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/Authprovider";
+import { MdLogout } from "react-icons/md";
 
 
 const Navbar = () => {
@@ -40,9 +41,10 @@ const Navbar = () => {
                     }
                 </div>
                 {
-                    user && user?.email ? <button onClick={logoutUser} className="btn bg-black text-white border-2 border-white">Logout</button> : <div className="space-x-2">
-                        <Link to="/login" className="btn bg-black text-white border-2 border-white">Login <TbLogin2 className="text-xl" /></Link>
-                        <Link to="/register" className="btn bg-black text-white border-2 border-white">Register <FaRegRegistered className="text-xl" /></Link>
+                    user && user?.email ? <button onClick={logoutUser} className="btn bg-white text-black">Logout<MdLogout className="text-xl"
+                     /></button> : <div className="space-x-2">
+                        <Link to="/login" className="btn bg-white text-black">Login <TbLogin2 className="text-xl" /></Link>
+                        <Link to="/register" className="btn bg-white text-black">Register <FaRegRegistered className="text-xl" /></Link>
                     </div>
                 }
             </div>
