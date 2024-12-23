@@ -3,14 +3,17 @@ import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Provider/Authprovider";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 
 const Addservice = () => {
 
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
+    const navigate = useNavigate()
 
-    const handleAddService = e => {
+    const handleAddService = async e => {
         e.preventDefault()
         const from = e.target;
         const image = from.image.value;
@@ -22,8 +25,18 @@ const Addservice = () => {
         const date = startDate;
         const email = from.email.value;
         const description = from.description.value;
-        const addService = {image,title,company,website,price,category,date,email,description}
+        const addService = { image, title, company, website, price, category, date, email, description }
         console.log(addService)
+
+        try {
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/addService`,addService)
+            console.log(data)
+            toast.success('Data Added Successfully!!')
+            navigate('/service')
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
     }
 
     return (
@@ -86,19 +99,19 @@ const Addservice = () => {
                             <label className="label">
                                 <span className="label-text">Added date</span>
                             </label>
-                            <DatePicker 
-                            className='border p-2 rounded-md'
-                            selected={startDate} 
-                            onChange={(date) => setStartDate(date)} />
+                            <DatePicker
+                                className='border p-2 rounded-md'
+                                selected={startDate}
+                                onChange={(date) => setStartDate(date)} />
                         </div>
                         <div className="form-control flex-1">
                             <label className="label">
                                 <span className="label-text">userEmail</span>
                             </label>
                             <input type="email"
-                             defaultValue={user?.email}
-                             disabled={true} 
-                             name='email' className="input input-bordered" required />
+                                defaultValue={user?.email}
+                                disabled={true}
+                                name='email' className="input input-bordered" required />
                         </div>
                     </div>
                     <div className="form-control">
