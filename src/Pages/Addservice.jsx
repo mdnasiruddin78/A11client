@@ -10,6 +10,22 @@ const Addservice = () => {
     const {user} = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
 
+    const handleAddService = e => {
+        e.preventDefault()
+        const from = e.target;
+        const image = from.image.value;
+        const title = from.title.value;
+        const company = from.title.value;
+        const website = from.website.value;
+        const price = from.price.value;
+        const category = from.category.value;
+        const date = startDate;
+        const email = from.email.value;
+        const description = from.description.value;
+        const addService = {image,title,company,website,price,category,date,email,description}
+        console.log(addService)
+    }
+
     return (
         <div className='lg:w-3/4 mx-auto mb-10'>
             <Helmet>
@@ -19,7 +35,7 @@ const Addservice = () => {
                 <h1 className="text-2xl font-bold text-white">Add Service</h1>
             </div>
             <div className="card bg-base-100 w-full rounded-xl">
-                <form className="card-body">
+                <form onSubmit={handleAddService} className="card-body">
                     {/* form first row */}
                     <div className='flex flex-col lg:flex-row gap-5'>
                         <div className="form-control flex-1">
