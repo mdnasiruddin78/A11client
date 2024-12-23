@@ -1,6 +1,7 @@
 import axios from "axios";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 
@@ -22,6 +23,9 @@ const Servicedetails = () => {
   
   return (
     <div>
+      <Helmet>
+        <title>SERVICE-DETAILS</title>
+      </Helmet>
       <h3 className="text-white text-3xl font-bold text-center mb-5">Service Details</h3>
       <div className="bg-[#082032] p-5 grid lg:grid-cols-2 grid-cols-1 border-[#69779b] border-2 mb-10 rounded-xl gap-5">
         <div>

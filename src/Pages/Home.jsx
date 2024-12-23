@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import Partners from "../components/Partners";
 import FaqGallery from "../components/FaqGallery";
 import Contract from "../components/Contract";
+import Featuredservices from "../components/Featuredservices";
 
 
 const Home = () => {
@@ -14,14 +15,16 @@ const Home = () => {
             <section>
                 <Banner></Banner>
             </section>
-            <section></section>
-            <section className="py-20">
+            <section className="mt-10">
+                <Featuredservices></Featuredservices>
+            </section>
+            <section className="py-10">
                 <Partners></Partners>
             </section>
             <section>
                 <FaqGallery></FaqGallery>
             </section>
-            <section className="py-20">
+            <section className="py-10">
                 <Contract></Contract>
             </section>
         </div>
