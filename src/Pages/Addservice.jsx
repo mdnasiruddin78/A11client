@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../Provider/Authprovider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const Addservice = () => {
@@ -18,7 +19,7 @@ const Addservice = () => {
         const from = e.target;
         const image = from.image.value;
         const title = from.title.value;
-        const company = from.title.value;
+        const company = from.company.value;
         const website = from.website.value;
         const price = from.price.value;
         const category = from.category.value;
