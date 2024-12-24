@@ -23,11 +23,11 @@ const Servicedetails = () => {
   }, [])
 
   const fetchAllService = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allService/${id}`)
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/serviceDetails/${id}`)
     setServices(data)
   }
 
-  const { description, email, date, price, category, website, company, title, image, _id } = services;
+  const { description, email, date, price, category, website, company, title, image, } = services;
 
   const handleReview = async e => {
     e.preventDefault()
@@ -36,12 +36,13 @@ const Servicedetails = () => {
     const reviewDate = startDate;
     const review = from.review.value;
     const ratings = rating;
+    const category = category;
     const reviewInfo = { email, reviewDate, review, ratings,category }
     console.log(reviewInfo)
 
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
-      console.log(data)
+      // console.log(data)
       toast.success('Review Added Successfully!!')
     } catch (err) {
       console.log(err)
@@ -63,7 +64,7 @@ const Servicedetails = () => {
           <h3 className="text-white text-xl">Service Title: {title}</h3>
           <h3 className="text-white text-xl">Company Name: {company}</h3>
           <p className="text-white text-xl">Category: {category}</p>
-          <p className="text-white text-xl">Price: {price}</p>
+          <p className="text-white text-xl">Price: ${price}</p>
           <p className="text-white text-xl">Website: {website}</p>
           <p className="text-white text-xl">Added date: {date && format(new Date(date), 'P')}</p>
           <p className="text-white text-xl">UserEmail: {email}</p>

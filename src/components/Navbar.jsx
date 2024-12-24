@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from '../assets/logoImg.webp';
 import { HiMenuAlt1 } from "react-icons/hi";
 import { TbLogin2 } from "react-icons/tb";
 import { FaRegRegistered } from "react-icons/fa6";
@@ -16,7 +15,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center backdrop-blur bg-white/10 py-2 px-5">
             <div className="flex space-x-3 items-center">
                 <div>
-                    <img className="lg:flex md:flex hidden w-16 rounded-full" src={logo} alt="logo" />
+                    <h3 className="text-white text-xl font-bold">WORK-<span className="text-[#28e6419c]">SERVICE</span></h3>
                 </div>
                 <div className="dropdown lg:hidden md:hidden flex">
                     <div tabIndex={0} role="button"><HiMenuAlt1 className='text-3xl text-white' /></div>
@@ -40,6 +39,8 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div>
                 <div className="lg:flex md:flex hidden space-x-4 text-white font-bold">
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/service">Services</NavLink>
