@@ -1,14 +1,21 @@
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 import axios from "axios";
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../Provider/Authprovider";
 
 
 const Servicedetails = () => {
 
   const { id } = useParams()
+  const {user} = useContext(AuthContext)
   const [services, setServices] = useState({})
+  const [rating, setRating] = useState(0)
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     fetchAllService()
@@ -20,9 +27,20 @@ const Servicedetails = () => {
   }
 
   const { description, email, date, price, category, website, company, title, image, _id } = services;
-  
+
+  const handleReview = e => {
+    e.preventDefault()
+    const from = e.target;
+    const email = from.email.value;
+    const reviewDate = startDate;
+    const review = from.review.value;
+    const ratings = rating;
+    const reviewInfo = {email,reviewDate,review,ratings}
+    console.log(reviewInfo)
+  }
+
   return (
-    <div>
+    <div className="mb-10">
       <Helmet>
         <title>SERVICE-DETAILS</title>
       </Helmet>
@@ -32,14 +50,53 @@ const Servicedetails = () => {
           <img className="rounded-xl lg:h-[400px]" src={image} alt="" />
         </div>
         <div className="space-y-4">
-            <h3 className="text-white text-xl">Service Title: {title}</h3>
-            <h3 className="text-white text-xl">Company Name: {company}</h3>
-            <p className="text-white text-xl">Category: {category}</p>
-            <p className="text-white text-xl">Price: {price}</p>
-            <p className="text-white text-xl">Website: {website}</p>
-            <p className="text-white text-xl">Added date: {format(new Date(),'P')}</p>
-            <p className="text-white text-xl">UserEmail: {email}</p>
-            <p className="text-white text-xl">Description: {description}</p>
+          <h3 className="text-white text-xl">Service Title: {title}</h3>
+          <h3 className="text-white text-xl">Company Name: {company}</h3>
+          <p className="text-white text-xl">Category: {category}</p>
+          <p className="text-white text-xl">Price: {price}</p>
+          <p className="text-white text-xl">Website: {website}</p>
+          <p className="text-white text-xl">Added date: {format(new Date(), 'P')}</p>
+          <p className="text-white text-xl">UserEmail: {email}</p>
+          <p className="text-white text-xl">Description: {description}</p>
+        </div>
+      </div>
+      <div>
+        <h3 className="text-white text-3xl font-bold text-center mb-5">Add Review</h3>
+        <div className="card bg-white w-full rounded-xl">
+          <form onSubmit={handleReview} className="card-body">
+            <div className='flex flex-col lg:flex-row gap-5'>
+              <div className="form-control flex-1">
+                <label className="label">
+                  <span className="label-text">UserInfo</span>
+                </label>
+                <input type="email" disabled={true} defaultValue={user?.email} name='email' className="input input-bordered" required />
+              </div>
+              <div className="form-control flex-1">
+                <label className="label">
+                  <span className="label-text">Review Posted Date</span>
+                </label>
+                <DatePicker
+                  className='border p-2 rounded-md'
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)} />
+              </div>
+              <div className="form-control flex-1">
+                <label className="label">
+                  <span className="label-text">Rating Selection</span>
+                </label>
+                <Rating style={{ maxWidth: 250 }} value={rating} onChange={setRating} />
+              </div>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Text Review</span>
+              </label>
+              <textarea className="textarea textarea-bordered" name='review' placeholder="Text Review" required></textarea>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn rounded-full bg-gray-800 text-white">Add Review</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

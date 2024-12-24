@@ -48,7 +48,7 @@ const Addservice = () => {
             <div className="text-center mb-3">
                 <h1 className="text-2xl font-bold text-white">Add Service</h1>
             </div>
-            <div className="card bg-base-100 w-full rounded-xl">
+            <div className="card bg-white w-full rounded-xl">
                 <form onSubmit={handleAddService} className="card-body">
                     {/* form first row */}
                     <div className='flex flex-col lg:flex-row gap-5'>
