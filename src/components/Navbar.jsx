@@ -23,15 +23,28 @@ const Navbar = () => {
                     <ul tabIndex={0} className="dropdown-content menu text-white backdrop-blur bg-white/30 font-bold rounded-box z-[1] w-44 p-2">
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/service">Services</NavLink></li>
-                        <li><NavLink to="/addservice">Add Service</NavLink></li>
-                        <li><NavLink to="/myreview">My Reviews</NavLink></li>
+                        <li>
+                            {
+                                user && <NavLink to="/addservice">Add Service</NavLink>
+                            }
+                        </li>
+                        <li>
+                            {
+                                user && <NavLink to="/myreview">My Reviews</NavLink>
+                            }
+                        </li>
                     </ul>
                 </div>
                 <div className="lg:flex md:flex hidden space-x-4 text-white font-bold">
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/service">Services</NavLink>
-                    <NavLink to="/addservice">Add Service</NavLink>
-                    <NavLink to="/myreview">My Reviews</NavLink>
+                    {
+                        user && <NavLink to="/addservice">Add Service</NavLink>
+                    }
+
+                    {
+                        user && <NavLink to="/myreview">My Reviews</NavLink>
+                    }
                 </div>
             </div>
             <div className='flex justify-between items-center space-x-2'>
@@ -42,7 +55,7 @@ const Navbar = () => {
                 </div>
                 {
                     user && user?.email ? <button onClick={logoutUser} className="btn bg-white text-black">Logout<MdLogout className="text-xl"
-                     /></button> : <div className="space-x-2">
+                    /></button> : <div className="space-x-2">
                         <Link to="/login" className="btn bg-white text-black">Login <TbLogin2 className="text-xl" /></Link>
                         <Link to="/register" className="btn bg-white text-black">Register <FaRegRegistered className="text-xl" /></Link>
                     </div>
