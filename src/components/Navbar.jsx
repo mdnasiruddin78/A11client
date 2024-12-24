@@ -13,10 +13,10 @@ const Navbar = () => {
     const { user, logoutUser } = useContext(AuthContext)
 
     return (
-        <div className="flex justify-between items-center backdrop-blur bg-white/10 py-3 px-6">
+        <div className="flex justify-between items-center backdrop-blur bg-white/10 py-2 px-5">
             <div className="flex space-x-3 items-center">
                 <div>
-                    <img className="lg:flex md:flex hidden w-16 rounded-xl" src={logo} alt="logo" />
+                    <img className="lg:flex md:flex hidden w-16 rounded-full" src={logo} alt="logo" />
                 </div>
                 <div className="dropdown lg:hidden md:hidden flex">
                     <div tabIndex={0} role="button"><HiMenuAlt1 className='text-3xl text-white' /></div>

@@ -27,7 +27,7 @@ const Servicedetails = () => {
   }
 
   const { description, email, date, price, category, website, company, title, image, _id } = services;
-
+  
   const handleReview = e => {
     e.preventDefault()
     const from = e.target;
@@ -55,7 +55,7 @@ const Servicedetails = () => {
           <p className="text-white text-xl">Category: {category}</p>
           <p className="text-white text-xl">Price: {price}</p>
           <p className="text-white text-xl">Website: {website}</p>
-          <p className="text-white text-xl">Added date: {format(new Date(), 'P')}</p>
+          <p className="text-white text-xl">Added date: {date && format(new Date(date), 'P')}</p>
           <p className="text-white text-xl">UserEmail: {email}</p>
           <p className="text-white text-xl">Description: {description}</p>
         </div>
