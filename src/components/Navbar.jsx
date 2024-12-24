@@ -33,6 +33,11 @@ const Navbar = () => {
                                 user && <NavLink to="/myreview">My Reviews</NavLink>
                             }
                         </li>
+                        <li>
+                            {
+                                user && <NavLink to="/myservice">My Services</NavLink>
+                            }
+                        </li>
                     </ul>
                 </div>
                 <div className="lg:flex md:flex hidden space-x-4 text-white font-bold">
@@ -44,6 +49,9 @@ const Navbar = () => {
 
                     {
                         user && <NavLink to="/myreview">My Reviews</NavLink>
+                    }
+                    {
+                        user && <NavLink to="/myservice">My Services</NavLink>
                     }
                 </div>
             </div>

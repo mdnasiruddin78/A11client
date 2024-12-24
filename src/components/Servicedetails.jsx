@@ -7,12 +7,13 @@ import DatePicker from "react-datepicker";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
+import toast from "react-hot-toast";
 
 
 const Servicedetails = () => {
 
   const { id } = useParams()
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [services, setServices] = useState({})
   const [rating, setRating] = useState(0)
   const [startDate, setStartDate] = useState(new Date());
@@ -27,16 +28,25 @@ const Servicedetails = () => {
   }
 
   const { description, email, date, price, category, website, company, title, image, _id } = services;
-  
-  const handleReview = e => {
+
+  const handleReview = async e => {
     e.preventDefault()
     const from = e.target;
     const email = from.email.value;
     const reviewDate = startDate;
     const review = from.review.value;
     const ratings = rating;
-    const reviewInfo = {email,reviewDate,review,ratings}
+    const reviewInfo = { email, reviewDate, review, ratings,category }
     console.log(reviewInfo)
+
+    try {
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
+      console.log(data)
+      toast.success('Review Added Successfully!!')
+    } catch (err) {
+      console.log(err)
+      toast.error(err.message)
+    }
   }
 
   return (
