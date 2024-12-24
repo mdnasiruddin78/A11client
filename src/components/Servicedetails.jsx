@@ -36,8 +36,7 @@ const Servicedetails = () => {
     const reviewDate = startDate;
     const review = from.review.value;
     const ratings = rating;
-    const category = category;
-    const reviewInfo = { email, reviewDate, review, ratings,category }
+    const reviewInfo = { email, reviewDate, review, ratings,category,title }
     console.log(reviewInfo)
 
     try {
