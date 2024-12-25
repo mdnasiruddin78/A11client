@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
 import toast from "react-hot-toast";
+import ReviewCard from "./ReviewCard";
 
 
 const Servicedetails = () => {
@@ -17,6 +18,8 @@ const Servicedetails = () => {
   const [services, setServices] = useState({})
   const [rating, setRating] = useState(0)
   const [startDate, setStartDate] = useState(new Date());
+  const [reviews, setReviews] = useState([]);
+
 
   useEffect(() => {
     fetchAllService()
@@ -41,12 +44,21 @@ const Servicedetails = () => {
 
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
-      // console.log(data)
+      console.log(data)
       toast.success('Review Added Successfully!!')
     } catch (err) {
       console.log(err)
       toast.error(err.message)
     }
+  }
+
+  useEffect(() => {
+    fetchAllReview()
+  }, [])
+
+  const fetchAllReview = async () => {
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReview/${services?.category}`)
+    setReviews(data)
   }
 
   return (
@@ -69,6 +81,11 @@ const Servicedetails = () => {
           <p className="text-white text-xl">UserEmail: {email}</p>
           <p className="text-white text-xl">Description: {description}</p>
         </div>
+      </div>
+      <div>
+        {
+          reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
+        }
       </div>
       <div>
         <h3 className="text-white text-3xl font-bold text-center mb-5">Add Review</h3>

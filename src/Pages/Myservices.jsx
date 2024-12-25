@@ -54,7 +54,7 @@ const Myservices = () => {
             ));
     }
 
-    const handleUpdateService = async e => {
+    const handleUpdateService = async (e,id) => {
         e.preventDefault()
         const from = e.target;
         const image = from.image.value;
@@ -70,7 +70,8 @@ const Myservices = () => {
         console.log(updateService)
 
         try {
-            await axios.put(`${import.meta.env.VITE_API_URL}/updateService/${id}`, updateService)
+            const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/updateService/${id}`, updateService)
+            console.log(data)
             toast.success('Data Updated Successfully!!')
             navigate('/service')
         } catch (err) {
@@ -138,7 +139,7 @@ const Myservices = () => {
                             <dialog id={service?._id} className="modal">
                                 <div className="modal-box w-11/12 max-w-5xl">
                                     <div className="card bg-white w-full rounded-xl">
-                                        <form onSubmit={handleUpdateService} className="card-body">
+                                        <form onSubmit={(e)=>handleUpdateService(e,service._id)} className="card-body">
                                             {/* form first row */}
                                             <div className='flex flex-col lg:flex-row gap-5'>
                                                 <div className="form-control flex-1">
