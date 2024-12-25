@@ -14,12 +14,12 @@ const Navbar = () => {
     return (
         <div className="flex justify-between items-center backdrop-blur bg-white/10 py-2 px-5">
             <div className="flex space-x-3 items-center">
-                <div>
+                <div className="hidden lg:flex">
                     <h3 className="text-white text-xl font-bold">WORK-<span className="text-[#28e6419c]">SERVICE</span></h3>
                 </div>
                 <div className="dropdown lg:hidden md:hidden flex">
                     <div tabIndex={0} role="button"><HiMenuAlt1 className='text-3xl text-white' /></div>
-                    <ul tabIndex={0} className="dropdown-content menu text-white backdrop-blur bg-white/30 font-bold rounded-box z-[1] w-44 p-2">
+                    <ul tabIndex={0} className="dropdown-content menu text-black bg-white font-bold rounded-box z-[1] w-44 p-2">
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/service">Services</NavLink></li>
                         <li>

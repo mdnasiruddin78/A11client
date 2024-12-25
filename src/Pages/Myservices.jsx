@@ -215,7 +215,6 @@ const Myservices = () => {
                                                         <span className="label-text">Added date</span>
                                                     </label>
                                                     <DatePicker
-                                                        defaultValue={service?.date}
                                                         className='border p-2 rounded-md'
                                                         selected={startDate}
                                                         onChange={(date) => setStartDate(date)} />

@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
 import toast from "react-hot-toast";
 import ReviewCard from "./ReviewCard";
@@ -14,6 +14,7 @@ import ReviewCard from "./ReviewCard";
 const Servicedetails = () => {
 
   const { id } = useParams()
+  const navigate = useNavigate()
   const { user } = useContext(AuthContext)
   const [services, setServices] = useState({})
   const [rating, setRating] = useState(0)
@@ -32,7 +33,7 @@ const Servicedetails = () => {
 
   const { description, email, date, price, category, website, company, title, image, } = services;
 
-  const handleReview = async e => {
+  const handleAddReview = async e => {
     e.preventDefault()
     const from = e.target;
     const email = from.email.value;
@@ -46,6 +47,7 @@ const Servicedetails = () => {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
       console.log(data)
       toast.success('Review Added Successfully!!')
+      navigate('/myreview')
     } catch (err) {
       console.log(err)
       toast.error(err.message)
@@ -90,7 +92,7 @@ const Servicedetails = () => {
       <div>
         <h3 className="text-white text-3xl font-bold text-center mb-5">Add Review</h3>
         <div className="card bg-white w-full rounded-xl">
-          <form onSubmit={handleReview} className="card-body">
+          <form onSubmit={handleAddReview} className="card-body">
             <div className='flex flex-col lg:flex-row gap-5'>
               <div className="form-control flex-1">
                 <label className="label">

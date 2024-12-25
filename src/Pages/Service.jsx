@@ -17,7 +17,7 @@ const Service = () => {
       },[])
 
     return (
-        <div className="mb-10">
+        <div className="mb-10 min-h-[calc(100vh-306px)]">
             <Helmet>
                 <title>ALL-SERVICE</title>
             </Helmet>
