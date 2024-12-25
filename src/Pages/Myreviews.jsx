@@ -37,7 +37,7 @@ const Myreviews = () => {
       toast.error(err.message)
     }
   }
-console.log(review)
+  console.log(review)
   const modernDelete = (id) => {
     toast(
       (t) => (
@@ -54,7 +54,7 @@ console.log(review)
       ));
   }
 
-  const handleUpdateReview = async (e,id) => {
+  const handleUpdateReview = async (e, id) => {
     e.preventDefault()
     const from = e.target;
     const email = from.email.value;
@@ -65,7 +65,7 @@ console.log(review)
     console.log(updateReview)
 
     try {
-      const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/reviewUpdate/${id}`,updateReview)
+      const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/reviewUpdate/${id}`, updateReview)
       console.log(data)
       toast.success('Review Update Successfully!!')
     } catch (err) {
@@ -89,6 +89,7 @@ console.log(review)
                 </label>
               </th>
               <th className="text-white">Name</th>
+              <th className="text-white">Date</th>
               <th className="text-white">Service Title</th>
               <th className="text-white">Rating</th>
               <th className="text-white">Review</th>
@@ -115,12 +116,15 @@ console.log(review)
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold text-white">{reviews?.email}</div>
-                      <div className="text-sm opacity-50 text-white">{reviews?.reviewDate
-                        && format(new Date(reviews?.reviewDate
-                        ), 'P')}</div>
+                      <div className="font-bold text-white">{user?.displayName}</div>
+                      <div className="font-bold text-gray-500">{user?.email}</div>
                     </div>
                   </div>
+                </td>
+                <td className="text-white">
+                  {reviews?.reviewDate
+                    && format(new Date(reviews?.reviewDate
+                    ), 'P')}
                 </td>
                 <td className="text-white">
                   {reviews?.title}
@@ -137,15 +141,15 @@ console.log(review)
                 <dialog id={reviews?._id} className="modal">
                   <div className="modal-box w-11/12 max-w-5xl">
                     <div className="card bg-white w-full rounded-xl">
-                      <form onSubmit={(e)=>handleUpdateReview(e,reviews._id)} className="card-body">
+                      <form onSubmit={(e) => handleUpdateReview(e, reviews._id)} className="card-body">
                         <div className='flex flex-col lg:flex-row gap-5'>
                           <div className="form-control flex-1">
                             <label className="label">
                               <span className="label-text">UserInfo</span>
                             </label>
                             <input type="email" disabled={true}
-                             defaultValue={user?.email} 
-                             name='email' className="input input-bordered" required />
+                              defaultValue={user?.email}
+                              name='email' className="input input-bordered" required />
                           </div>
                           <div className="form-control flex-1">
                             <label className="label">
@@ -161,19 +165,19 @@ console.log(review)
                               <span className="label-text">Rating Selection</span>
                             </label>
                             <Rating
-                             style={{ maxWidth: 250 }}
-                              value={rating} onChange={setRating}/>
+                              style={{ maxWidth: 250 }}
+                              value={rating} onChange={setRating} />
                           </div>
                         </div>
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">Text Review</span>
                           </label>
-                          <textarea 
-                          defaultValue={reviews?.review}
-                          className="textarea textarea-bordered"
-                           name='review' placeholder="Text Review" 
-                           required></textarea>
+                          <textarea
+                            defaultValue={reviews?.review}
+                            className="textarea textarea-bordered"
+                            name='review' placeholder="Text Review"
+                            required></textarea>
                         </div>
                         <div className="form-control mt-6">
                           <button className="btn rounded-full bg-gray-800 text-white">Add Review</button>
