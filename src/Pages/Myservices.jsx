@@ -69,14 +69,14 @@ const Myservices = () => {
         const updateService = { image, title, company, website, price, category, date, email, description }
         console.log(updateService)
 
-        // try {
-        //     await axios.put(`${import.meta.env.VITE_API_URL}/updateService/${_id}`, updateService)
-        //     toast.success('Data Updated Successfully!!')
-        //     navigate('/service')
-        // } catch (err) {
-        //     console.log(err)
-        //     toast.error(err.message)
-        // }
+        try {
+            await axios.put(`${import.meta.env.VITE_API_URL}/updateService/${id}`, updateService)
+            toast.success('Data Updated Successfully!!')
+            navigate('/service')
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
     }
 
     return (
@@ -130,12 +130,12 @@ const Myservices = () => {
                             <td className="text-white">{service?.price}</td>
                             <td className="text-white">{service?.description.substring(0, 20)}...</td>
                             <td>
-                                <button onClick={() => document.getElementById('my_modal_4').showModal()} className="btn btn-ghost text-2xl text-blue-500"><FaEdit /></button>
+                                <button onClick={() => document.getElementById(service?._id).showModal()} className="btn btn-ghost text-2xl text-blue-500"><FaEdit /></button>
                             </td>
                             <th>
                                 <button onClick={() => modernDelete(service?._id)} className="btn btn-ghost text-2xl text-red-400"><MdOutlineDeleteForever /></button>
                             </th>
-                            <dialog id="my_modal_4" className="modal">
+                            <dialog id={service?._id} className="modal">
                                 <div className="modal-box w-11/12 max-w-5xl">
                                     <div className="card bg-white w-full rounded-xl">
                                         <form onSubmit={handleUpdateService} className="card-body">
