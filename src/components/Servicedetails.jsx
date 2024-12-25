@@ -14,7 +14,6 @@ import ReviewCard from "./ReviewCard";
 const Servicedetails = () => {
 
   const { id } = useParams()
-  const navigate = useNavigate()
   const { user } = useContext(AuthContext)
   const [services, setServices] = useState({})
   const [rating, setRating] = useState(0)
@@ -40,14 +39,15 @@ const Servicedetails = () => {
     const reviewDate = startDate;
     const review = from.review.value;
     const ratings = rating;
-    const reviewInfo = { email, reviewDate, review, ratings,category,title }
+    const photo = user?.photoURL
+    const name = user?.displayName
+    const reviewInfo = { email, reviewDate, review, ratings, category, title, photo, name }
     console.log(reviewInfo)
 
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
       console.log(data)
       toast.success('Review Added Successfully!!')
-      navigate('/myreview')
     } catch (err) {
       console.log(err)
       toast.error(err.message)
@@ -56,10 +56,10 @@ const Servicedetails = () => {
 
   useEffect(() => {
     fetchAllReview()
-  }, [])
+  }, [category])
 
   const fetchAllReview = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReview/${services?.category}`)
+    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReview/${category}`)
     setReviews(data)
   }
 
@@ -85,9 +85,11 @@ const Servicedetails = () => {
         </div>
       </div>
       <div>
-        {
-          reviews.map(review => <ReviewCard key={review._id} review={review}></ReviewCard>)
-        }
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-10">
+          {
+            reviews.map(reviewc => <ReviewCard key={reviewc._id} reviewc={reviewc}></ReviewCard>)
+          }
+        </div>
       </div>
       <div>
         <h3 className="text-white text-3xl font-bold text-center mb-5">Add Review</h3>

@@ -1,8 +1,9 @@
-# React + Vite
+1. project name: WORK-SERVICE.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+2. purpose: online digital service.our work has very professional work.we are try to our best work for out client.
 
-Currently, two official plugins are available:
+3. key features: a.A specific work good or bad people reviwe by a from feature. b.add work with a single user email.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+4. npm packages: a.Framer-Motion animation. b.date-picker. c.Rating-star. d.React-Icon.
+
+5. live URL: 

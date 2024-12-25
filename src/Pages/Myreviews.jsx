@@ -37,7 +37,7 @@ const Myreviews = () => {
       toast.error(err.message)
     }
   }
-  console.log(review)
+  
   const modernDelete = (id) => {
     toast(
       (t) => (

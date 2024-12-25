@@ -16,11 +16,10 @@ const Login = () => {
         const from = e.target;
         const email = from.email.value;
         const password = from.password.value;
-        console.log(email,password)
 
         signInUser(email,password)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
             const user = result.user;
             setUser(user)
             navigate(location?.state? location.state : '/')
