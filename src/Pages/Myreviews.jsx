@@ -16,10 +16,15 @@ const Myreviews = () => {
   const [rating, setRating] = useState()
   const [startDate, setStartDate] = useState(new Date());
 
+  
   const fetchAllReview = async () => {
     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReviews/${user?.email}`)
     setReview(data)
   }
+
+  const handleChange = (date) => {
+    setSelectedDate(date);
+  };
 
   useEffect(() => {
     fetchAllReview()
@@ -158,7 +163,8 @@ const Myreviews = () => {
                             <DatePicker
                               className='border p-2 rounded-md'
                               selected={startDate}
-                              onChange={(date) => setStartDate(date)} />
+                              onChange={(date) => setStartDate(date)} 
+                              />
                           </div>
                           <div className="form-control flex-1">
                             <label className="label">
@@ -180,7 +186,7 @@ const Myreviews = () => {
                             required></textarea>
                         </div>
                         <div className="form-control mt-6">
-                          <button className="btn rounded-full bg-gray-800 text-white">Add Review</button>
+                          <button className="btn rounded-full bg-gray-800 text-white">Update Review</button>
                         </div>
                       </form>
                     </div>

@@ -15,6 +15,7 @@ const Servicedetails = () => {
 
   const { id } = useParams()
   const { user } = useContext(AuthContext)
+  const navigate = useNavigate()
   const [services, setServices] = useState({})
   const [rating, setRating] = useState(0)
   const [startDate, setStartDate] = useState(new Date());
@@ -48,6 +49,7 @@ const Servicedetails = () => {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
       console.log(data)
       toast.success('Review Added Successfully!!')
+      navigate('/myreview')
     } catch (err) {
       console.log(err)
       toast.error(err.message)

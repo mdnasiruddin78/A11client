@@ -9,6 +9,7 @@ const ReviewCard = ({ reviewc }) => {
 
     return (
         <div className='flex-1  px-4 py-7 bg-white rounded-md'>
+            <h3 className="text-xl font-bold mt-2 text-center">Review</h3>
             <div className='flex items-center justify-between'>
                 {
                     reviewDate && <span className='text-sm font-light text-gray-800 '>
