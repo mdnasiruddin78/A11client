@@ -1,17 +1,20 @@
 import { FaInternetExplorer, FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { LuSend } from "react-icons/lu";
+import CountUp from 'react-countup';
+import React from "react";
 
 
 const Contract = () => {
+
     return (
         <div>
             <h3 className="text-white text-3xl text-center font-bold mb-5">Contract Us</h3>
             <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
                 <div className="space-y-5">
                     <div className="flex items-center space-x-2">
-                    <FaInternetExplorer className="text-white text-2xl"/>
-                    <h3 className="text-white text-2xl font-bold">Company Name: WORK-SERVICE</h3>
+                        <FaInternetExplorer className="text-white text-2xl" />
+                        <h3 className="text-white text-2xl font-bold">Company Name: WORK-SERVICE</h3>
                     </div>
                     <div className="flex items-center space-x-2">
                         <FaPhoneVolume className="text-white text-2xl" />
@@ -28,11 +31,17 @@ const Contract = () => {
                         </p>
                     </div>
                 </div>
-                <div className="space-y-5">
-                    <p className="text-white text-2xl font-bold">Mailing Address: Advantage Resource
-                        PO Box 4099
-                        Lexington, KY 40544-4099</p>
-                    <p className="text-white text-2xl font-bold">Thank you for the interest. Please feel free to contact us to learn more about WorkerServices, WorkerFringe, Worker401k, or Advantage Resource.</p>
+                <div className="space-y-10">
+                   <div className="space-y-3">
+                    <h3 className="text-white text-2xl">Users Review Countup</h3>
+                   <CountUp duration={50} start={0} end={200}>
+                        {({ countUpRef }) => (
+                            <div className="flex items-center space-x-3">
+                                <span className="text-6xl text-white font-bold" ref={countUpRef} />
+                            </div>
+                        )}
+                    </CountUp>
+                   </div>
                     <div>
                         <div className="flex items-center space-x-2">
                             <LuSend className="text-white text-2xl" />

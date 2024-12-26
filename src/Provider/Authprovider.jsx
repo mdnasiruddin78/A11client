@@ -1,45 +1,53 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/Firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 
 const Authprovider = ({children}) => {
 
     const [user,setUser] = useState()
-    const [loading,setLoding] = useState(true)
+    const [loading,setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider()
 
     const handleGoole = () => {
-        setLoding(true)
+        setLoading(true)
         return signInWithPopup(auth,googleProvider)
     }
 
     const createUser = (email,password) => {
-        setLoding(true)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
     const signInUser = (email,password) => {
-        setLoding(true)
+        setLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
     const logoutUser = () => {
-        setLoding(true)
+        setLoading(true)
         return signOut(auth)
     }
 
     const updateUserProfile = (updatedData) => {
-        setLoding(true)
+        setLoading(true)
         return updateProfile(auth.currentUser,updatedData)
     }
 
     useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth,currentUsers => {
+        const unSubscribe = onAuthStateChanged(auth,async currentUsers => {
             console.log(currentUsers)
             setUser(currentUsers)
-            setLoding(false)
+            if(currentUsers?.email){
+                const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{email: currentUsers?.email},{withCredentials: true})
+                console.log('signin',data)
+           }else{
+                const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/logout`,{},{withCredentials: true})
+                console.log('logout',data)
+           }
+           setLoading(false)
         })
         return () => {
             unSubscribe()
