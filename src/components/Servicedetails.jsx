@@ -83,6 +83,7 @@ const Servicedetails = () => {
           <p className="text-white text-xl">Website: {website}</p>
           <p className="text-white text-xl">Added date: {date && format(new Date(date), 'P')}</p>
           <p className="text-white text-xl">UserEmail: {email}</p>
+          <p className="text-white text-xl">Review Count: {reviews.length}</p>
           <p className="text-white text-xl">Description: {description}</p>
         </div>
       </div>

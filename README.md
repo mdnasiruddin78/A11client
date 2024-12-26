@@ -6,4 +6,4 @@
 
 4. npm packages: a.Framer-Motion animation. b.date-picker. c.Rating-star. d.React-Icon.
 
-5. live URL: 
+5. live URL: https://thunderous-pothos-0225a2.netlify.app/

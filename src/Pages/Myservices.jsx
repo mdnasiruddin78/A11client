@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import toast from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import { useNavigate, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const Myservices = () => {
@@ -82,6 +83,9 @@ const Myservices = () => {
 
     return (
         <div className="overflow-x-auto mb-10 min-h-[calc(100vh-306px)]">
+            <Helmet>
+                <title>MY-SERVICES</title>
+            </Helmet>
             <h3 className="text-white text-3xl font-bold text-center">My Services</h3>
             <table className="table">
                 {/* head */}

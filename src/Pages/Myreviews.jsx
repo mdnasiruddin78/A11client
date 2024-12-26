@@ -7,6 +7,8 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import toast from "react-hot-toast";
 import { Rating } from "@smastrom/react-rating";
 import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const Myreviews = () => {
@@ -21,10 +23,6 @@ const Myreviews = () => {
     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReviews/${user?.email}`)
     setReview(data)
   }
-
-  const handleChange = (date) => {
-    setSelectedDate(date);
-  };
 
   useEffect(() => {
     fetchAllReview()
@@ -82,6 +80,9 @@ const Myreviews = () => {
 
   return (
     <div className="min-h-[calc(100vh-306px)]">
+      <Helmet>
+        <title>MY-REVIEWS</title>
+      </Helmet>
       <h3 className="text-white text-2xl font-bold text-center mb-5">My Reviews</h3>
       <div className="overflow-x-auto">
         <table className="table">
