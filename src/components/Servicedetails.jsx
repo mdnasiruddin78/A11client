@@ -57,13 +57,12 @@ const Servicedetails = () => {
   }
 
   useEffect(() => {
+    const fetchAllReview = async () => {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReview/${category}`)
+      setReviews(data)
+    }
     fetchAllReview()
   }, [category])
-
-  const fetchAllReview = async () => {
-    const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/allReview/${category}`)
-    setReviews(data)
-  }
 
   return (
     <div className="mb-10">
@@ -103,7 +102,7 @@ const Servicedetails = () => {
                 <label className="label">
                   <span className="label-text">UserInfo</span>
                 </label>
-                <input type="email" disabled={true} defaultValue={user?.email} name='email' className="input input-bordered" required />
+                <input type="email" readOnly defaultValue={user?.email} name='email' className="input input-bordered" required />
               </div>
               <div className="form-control flex-1">
                 <label className="label">

@@ -111,7 +111,7 @@ const Addservice = () => {
                             </label>
                             <input type="email"
                                 defaultValue={user?.email}
-                                disabled={true}
+                                readOnly
                                 name='email' className="input input-bordered" required />
                         </div>
                     </div>
