@@ -17,7 +17,7 @@ const Register = () => {
         const photo = from.photo.value;
         const email = from.email.value;
         const password = from.password.value;
-        console.log(name,photo,email,password)
+        // console.log(name,photo,email,password)
 
         if(password.length < 6){
             toast.error('Password must contain at least 6 characters')
@@ -41,12 +41,12 @@ const Register = () => {
             .then(()=>{
                 navigate("/")
             }).catch(error => {
-                console.log(error)
+                // console.log(error)
             })
             toast.success('Register successfully')
         })
         .catch(error => {
-            console.log(error.message)
+            // console.log(error.message)
             toast.error(error.message)
         })
     }
@@ -54,12 +54,12 @@ const Register = () => {
     const handleGooleLogin = () => {
         handleGoole()
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
             toast.success('Register successfully')
             navigate("/")
         })
         .catch(error => {
-            console.log(error.message)
+            // console.log(error.message)
         })
     }
 

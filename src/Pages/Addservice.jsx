@@ -27,15 +27,15 @@ const Addservice = () => {
         const email = from.email.value;
         const description = from.description.value;
         const addService = { image, title, company, website, price, category, date, email, description }
-        console.log(addService)
+        // console.log(addService)
 
         try {
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/addService`,addService)
-            console.log(data)
+            // console.log(data)
             toast.success('Data Added Successfully!!')
             navigate('/service')
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             toast.error(err.message)
         }
     }

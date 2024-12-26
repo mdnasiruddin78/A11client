@@ -43,15 +43,15 @@ const Servicedetails = () => {
     const photo = user?.photoURL
     const name = user?.displayName
     const reviewInfo = { email, reviewDate, review, ratings, category, title, photo, name }
-    console.log(reviewInfo)
+    // console.log(reviewInfo)
 
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/allReview`, reviewInfo)
-      console.log(data)
+      // console.log(data)
       toast.success('Review Added Successfully!!')
       navigate('/myreview')
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err.message)
     }
   }

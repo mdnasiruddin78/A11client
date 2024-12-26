@@ -25,14 +25,14 @@ const Reviewextra = ({ reviews,modernDelete }) => {
         const review = from.review.value;
         const ratings = rating;
         const updateReview = { email, review,reviewDate, ratings }
-        console.log(updateReview)
+        // console.log(updateReview)
     
         try {
           const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/reviewUpdate/${_id}`, updateReview)
-          console.log(data)
+        //   console.log(data)
           toast.success('Review Update Successfully!!')
         } catch (err) {
-          console.log(err)
+        //   console.log(err)
           toast.error(err.message)
         }
       }

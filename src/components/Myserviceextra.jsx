@@ -29,15 +29,15 @@ const Myserviceextra = ({service,modernDelete}) => {
             const email = from.email.value;
             const description = from.description.value;
             const updateService = { image, title, company, website, price, category, date, email, description }
-            console.log(updateService)
+            // console.log(updateService)
     
             try {
                 const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/updateService/${id}`, updateService)
-                console.log(data)
+                // console.log(data)
                 toast.success('Data Updated Successfully!!')
                 navigate('/service')
             } catch (err) {
-                console.log(err)
+                // console.log(err)
                 toast.error(err.message)
             }
         }

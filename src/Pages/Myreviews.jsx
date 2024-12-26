@@ -24,12 +24,12 @@ const Myreviews = () => {
   const handleDelete = async _id => {
     try {
       const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/deleteReview/${_id}`)
-      console.log(data)
+      // console.log(data)
       fetchAllReview()
       toast.success('Review Delete Successfully!!')
     }
     catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err.message)
     }
   }
