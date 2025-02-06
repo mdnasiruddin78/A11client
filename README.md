@@ -26,6 +26,30 @@
 
 ---
 
+### Dependencies : 
+- react-rating
+- axios
+- date-fns
+- dateformat
+- firebase
+- localforage
+- match-sorter
+- motion
+- react
+- react-countup
+- react-datepicker
+- react-dom
+- react-fast-marquee
+- react-helmet-async
+- react-hot-toast
+- react-icons
+- react-router-dom
+- sort-by
+- sweetalert2
+- swiper
+
+---
+
 ### 🎨 Run the project locally step-by-step guideline :
 - Open the project folder in editor.
 - See all the technologie version are updated in current version.
