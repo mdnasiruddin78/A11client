@@ -1,9 +1,38 @@
-1. project name: WORK-SERVICE.
+### 🎨 project overview :
+-This projects Name WORK-SERVICE. online digital service.our work has very professional work.we are try to our best work for out client.User can add a review a single service.Home page show countup the total user,review,service.
 
-2. purpose: online digital service.our work has very professional work.we are try to our best work for out client.
+---
 
-3. key features: a.A specific work good or bad people reviwe by a from feature. b.add work with a single user email.
+### 🛠 Technologies Used :
+- Html
+- Css
+- Tailwind Css
+- Javascript
+- Firebase
+- React
+- DaisyUi
+- Node.js
+- MongoDB
+- express.js
 
-4. npm packages: a.Framer-Motion animation. b.date-picker. c.Rating-star. d.React-Icon.
 
-5. live URL: https://thunderous-pothos-0225a2.netlify.app/
+---
+
+### 🎯 core features of the project :
+- A specific work good or bad people reviwe by a from.
+- Add work with a single user email.
+- Service add to table service name,title,user email.
+- Framer-Motion animation.
+
+---
+
+### 🎨 Run the project locally step-by-step guideline :
+- Open the project folder in editor.
+- See all the technologie version are updated in current version.
+- then open the editor terminal and write npm run dev press enter key.
+- terminal give you a local Server link copy the link and past your browser run the link.
+
+---
+
+### live project links : 
+- https://thunderous-pothos-0225a2.netlify.app
