@@ -12,7 +12,7 @@ const Navbar = () => {
     const { user, logoutUser } = useContext(AuthContext)
 
     return (
-        <div className="flex justify-between items-center backdrop-blur bg-white/10 py-2 px-5">
+        <div className="flex justify-between items-center backdrop-blur bg-white/10 py-2 lg:px-14">
             <div className="flex space-x-3 items-center">
                 <div className="hidden lg:flex">
                     <h3 className="text-white text-xl font-bold">WORK-<span className="text-[#28e6419c]">SERVICE</span></h3>
@@ -59,7 +59,7 @@ const Navbar = () => {
             <div className='flex justify-between items-center space-x-2'>
                 <div>
                     {
-                        user && <div className='tooltip tooltip-left' data-tip={`${user?.email}`}><img className='w-12 rounded-full' src={user?.photoURL} alt="" /></div>
+                        user && <div className='tooltip tooltip-left' data-tip={`${user?.email}`}><img className='w-11 h-11 rounded-full' src={user?.photoURL} alt="" /></div>
                     }
                 </div>
                 {
