@@ -59,4 +59,4 @@
 ---
 
 ### live project links : 
-- https://thunderous-pothos-0225a2.netlify.app
+- https://a11-service-review.netlify.app
